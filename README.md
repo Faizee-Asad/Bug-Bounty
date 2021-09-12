@@ -4,3 +4,6 @@
 
 ## If You Want To Support Project Or Me You Can Buy Me A Coffee https://www.buymeacoffee.com/faizee
 
+![GitHub Logo](https://www.buymeacoffee.com/assets/img/logo-social.png)
+Format: ![Buy Me A Coffee ](https://www.buymeacoffee.com/faizee)
+
