@@ -110,12 +110,11 @@ Union Based SQL
 	' UNION SELECT 1,2,3 -- -
 	' UNION SELECT 1,load_file('/etc/password'),3 --
 
-Resources:
+Resources and Labs:
 
 	https://portswigger.net/web-security/sql-injection
-
-Labs:
-
-	https://portswigger.net/web-security/all-labs
 	https://tryhackme.com/room/sqlilab
+	https://smoggy-mozzarella-076.notion.site/SQL-d655b37898be4bf8a5c816e6a79f4e96
+	https://medium.com/nerd-for-tech/some-tips-for-sql-injections-764e1a254a29
+
 
