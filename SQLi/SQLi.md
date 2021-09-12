@@ -1,4 +1,4 @@
-SQL Injection
+#SQL Injection
 
 * Vulnerability that consists of an attacker interfering with the SQL queries that an application makes to a database.
 
