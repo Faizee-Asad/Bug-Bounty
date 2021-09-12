@@ -111,4 +111,6 @@ Union Based SQL
 	' UNION SELECT 1,load_file('/etc/password'),3 --
 
 
+Labs:
 
+	https://portswigger.net/web-security/all-labs
