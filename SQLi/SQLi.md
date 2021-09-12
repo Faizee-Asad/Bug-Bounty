@@ -77,3 +77,20 @@ Finding  SQLi Vulnerabilities
 Automated Exploitation Tool
 
 	sqlmap (https://github.com/sqlmapproject/sqlmap)
+
+Special Thanks : ???
+
+Payloads
+
+	'
+	"
+	)'
+	)"
+	')
+	")
+	'))
+	"))
+
+
+
+
