@@ -110,7 +110,11 @@ Union Based SQL
 	' UNION SELECT 1,2,3 -- -
 	' UNION SELECT 1,load_file('/etc/password'),3 --
 
+Resources:
+
+	https://portswigger.net/web-security/sql-injection
 
 Labs:
 
 	https://portswigger.net/web-security/all-labs
+
