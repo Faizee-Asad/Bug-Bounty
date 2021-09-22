@@ -112,9 +112,11 @@ Union Based SQL
 
 Resources and Labs:
 
+	https://smoggy-mozzarella-076.notion.site/SQL-d655b37898be4bf8a5c816e6a79f4e96
 	https://portswigger.net/web-security/sql-injection
 	https://tryhackme.com/room/sqlilab
-	https://smoggy-mozzarella-076.notion.site/SQL-d655b37898be4bf8a5c816e6a79f4e96
 	https://medium.com/nerd-for-tech/some-tips-for-sql-injections-764e1a254a29
+
+
 
 
