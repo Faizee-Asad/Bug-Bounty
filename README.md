@@ -3,12 +3,12 @@
  
 ## [Twitter](https://twitter.com/faizee_asad)
 
-
-![GitHub Logo](https://www.bmtdesigner.com/wp-content/uploads/2020/09/Buy-Me-a-Coffee-01.jpg) 
-## [Buy Me A Coffee](https://www.buymeacoffee.com/faizee)
- 
 Some Tutorials and Things to Do while Hunting Particular Vulnerability. 
 
+## [Buy Me A Coffee](https://www.buymeacoffee.com/faizee)
+![GitHub Logo](https://www.bmtdesigner.com/wp-content/uploads/2020/09/Buy-Me-a-Coffee-01.jpg) 
+
+ 
 ## Contributors
 
 <table>
