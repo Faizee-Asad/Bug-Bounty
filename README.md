@@ -1,13 +1,12 @@
 
 # Bug-Bounty
- 
-## [Twitter](https://twitter.com/faizee_asad)
 
 Some Tutorials and Things to Do while Hunting Particular Vulnerability. 
 
 ## [Buy Me A Coffee](https://www.buymeacoffee.com/faizee)
 ![GitHub Logo](https://www.bmtdesigner.com/wp-content/uploads/2020/09/Buy-Me-a-Coffee-01.jpg) 
 
+## [Twitter](https://twitter.com/faizee_asad)
  
 ## Contributors
 
