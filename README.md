@@ -5,10 +5,10 @@ Some Tutorials and Things to Do while Hunting Particular Vulnerability.
 
 ## Vulnerability Rating
 
-+ **[P1 Category](#p1-category)**
-+ **[P2 Category](#p2-category)**
-+ **[P3 Category](#p3-category)**
-+ **[P4 Category](#p4-category)**
++ **[P1](#p1)**
++ **[P2](#p2)**
++ **[P3](#p3)**
++ **[P4](#p4)**
 
 ## P1 Category
 1. [Using Default Credentials](/P1%20Category/p1-1.md)
