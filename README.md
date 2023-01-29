@@ -10,8 +10,8 @@ Some Tutorials and Things to Do while Hunting Particular Vulnerability.
 + **[P3](#p3)**
 + **[P4](#p4)**
 
-## P1 Category
-1. [Using Default Credentials](/P1%20Category/p1-1.md)
+## P1
+1. [Using Default Credentials](/P1/p1-1.md)
 2. [Local File Inclusion](/P1%20Category/p1-2.md)
 3. [Remote Code Execution (RCE)](/P1%20Category/p1-3.md)
 4. [SQL Injection](/P1%20Category/p1-4.md)
@@ -22,7 +22,7 @@ Some Tutorials and Things to Do while Hunting Particular Vulnerability.
 9. [Insecure OS/Firmware - Hardcoded Password Privileged User](/P1%20Category/p1-9.md)
 10. [Broken Cryptography - Cryptographic Flaw - Incorrect Usage](/P1%20Category/p1-10.md)
 
-## P2 Category
+## P2
 1. [Misconfigured DNS - High Impact Subdomain Takeover](/P2%20Category/p2-1.md)
 2. [OAuth Misconfiguration - Account Takeover](/P2%20Category/p2-2.md)
 3. [Weak Password Reset Implementation - Token Leakage via Host Header Poisoning](/P2%20Category/p2-3.md)
@@ -32,7 +32,7 @@ Some Tutorials and Things to Do while Hunting Particular Vulnerability.
 7. [Application-Level Denial-of-Service (DoS) - Critical Impact and/or Easy Difficulty](/P2%20Category/p2-7.md)
 8. [Insecure OS/Firmware - Hardcoded Password - Non-Privileged User](/P2%20Category/p2-8.md)
 
-## P3 Category
+## P3
 1. [Misconfigured DNS - Basic Subdomain Takeover](/P3%20Category/p3-1.md)
 2. [Mail Server Misconfiguration - No Spoofing Protection on Email Domain](/P3%20Category/p3-2.md)
 3. [HTTP Response Manipulation - Response Splitting (CRLF)](/P3%20Category/p3-3.md)
