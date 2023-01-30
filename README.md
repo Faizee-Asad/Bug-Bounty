@@ -12,8 +12,8 @@ Some Tutorials and Things to Do while Hunting Particular Vulnerability.
 
 ## P1
 1. [Using Default Credentials](/P1/p1-1.md)
-2. [Local File Inclusion](/P1%20Category/p1-2.md)
-3. [Remote Code Execution (RCE)](/P1%20Category/p1-3.md)
+2. [Local File Inclusion](/P1/p1-2.md)
+3. [Remote Code Execution (RCE)](/P1/p1-3.md)
 4. [SQL Injection](/P1%20Category/p1-4.md)
 5. [XML External Entity Injection (XXE)](/P1%20Category/p1-5.md)
 6. [Authentication Bypass](/P1%20Category/p1-6.md)
@@ -48,7 +48,7 @@ Some Tutorials and Things to Do while Hunting Particular Vulnerability.
 13. [Application-Level Denial-of-Service (DoS) - High Impact and/or Medium Difficulty](/P3%20Category/p3-13.md)
 14. [Client-Side Injection - Binary Planting - Default Folder Privilege Escalation](/P3%20Category/p3-14.md)
 
-## P4 Category
+## P4
 1. [Misconfigured DNS - Zone Transfer](/P4%20Category/p4-1.md)
 2. [Mail Server Misconfiguration - Email Spoofing to Inbox due to Missing or Misconfigured DMARC on Email Domain](/P4%20Category/p4-2.md)
 3. [Database Management System (DBMS) Misconfiguration - Excessively Privileged User / DBA](/P4%20Category/p4-3.md)
