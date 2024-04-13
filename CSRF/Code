@@ -247,6 +247,7 @@ data = pd.read_csv("Nifty.csv")
 fig = px.line(data, x=data.index, y=['Open ', 'Close '], markers=True, title="Line Plot of NIFTY-50 using Plotly", labels={'index': 'Index', 'value': 'Price'}, color_discrete_sequence=['green', 'red'])
 fig.update_layout(legend_title='Price', legend=dict(x=0, y=1, traceorder='normal'), plot_bgcolor='rgba(0,0,0,0)')
 fig.show()
+
 p9
 import numpy as np
 import pandas as pd
@@ -269,3 +270,13 @@ plt.figure(figsize=(12, 8))
 plot_tree(model, filled=True, feature_names=X.columns.tolist(), class_names=y.unique().tolist())
 plt.title("Decision Tree Visualization")
 plt.show()
+
+
+extra
+from sklearn.datasets import load_iris
+from sklearn import tree
+iris = load_iris()
+X, y = iris.data, iris.target
+clf = tree.DecisionTreeClassifier()
+clf = clf.fit(X, y)
+tree.plot_tree(clf)
