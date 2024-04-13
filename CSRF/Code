@@ -64,6 +64,159 @@ plot(line1,main="Sayyed Nahil",type="l",col="red")
 lines(line2,type="l",col="blue")
 
 p2B
+import matplotlib.pyplot as plt
+from sklearn.neighbors import KNeighborsClassifier
+x = [4, 5, 10, 4, 3, 11, 14 , 8, 10, 12]
+y = [21, 19, 24, 17, 16, 25, 24, 22, 21, 21]
+classes = [0, 0, 1, 0, 0, 1, 1, 0, 1, 1]
+plt.scatter(x, y, c=classes)
+plt.show()
+data = list(zip(x, y))
+print(data)
+model = KNeighborsClassifier(n_neighbors=1)
+model.fit(data, classes)
+new_x = 8
+new_y = 21
+new_point = [(new_x, new_y)]
+prediction = model.predict(new_point)
+plt.scatter(x + [new_x], y + [new_y], c=classes + [prediction[0]])
+plt.text(x=new_x-1.7, y=new_y-0.7, s=f"new point, class: {prediction[0]}")
+plt.show()
+model = KNeighborsClassifier(n_neighbors=5)
+model.fit(data, classes)
+prediction = model.predict(new_point)
+print(prediction)
+plt.scatter(x + [new_x], y + [new_y], c=classes + [prediction[0]])
+plt.text(x=new_x-1.7, y=new_y-0.7, s=f"new point, class: {prediction[0]}")
+plt.show()
+
+p3
+!pip install pgmpy
+import pandas as pd
+from pgmpy.estimators import MaximumLikelihoodEstimator
+from pgmpy.models import BayesianModel
+from pgmpy.inference import VariableElimination
+data = pd.read_csv("ds4.csv")
+heart_disease = pd.DataFrame(data)
+print(heart_disease)
+model = BayesianModel([
+    ('age', 'Lifestyle'),
+    ('Gender', 'Lifestyle'),
+    ('Family', 'heartdisease'),
+    ('diet', 'cholestrol'),
+    ('Lifestyle', 'diet'),
+    ('cholestrol', 'heartdisease'),
+    ('diet', 'cholestrol')
+])
+model.fit(heart_disease, estimator=MaximumLikelihoodEstimator)
+HeartDisease_infer = VariableElimination(model)
+print('For Age enter SuperSeniorCitizen:0, SeniorCitizen:1, MiddleAged:2, Youth:3, Teen:4')
+print('For Gender enter Male:0, Female:1')
+print('For Family History enter Yes:1, No:0')
+print('For Diet enter High:0, Medium:1')
+print('for LifeStyle enter Athlete:0, Active:1, Moderate:2, Sedentary:3')
+print('for Cholesterol enter High:0, BorderLine:1, Normal:2')
+q = HeartDisease_infer.query(variables=['heartdisease'], 
+    evidence={
+    'age': int(input('Enter Age: ')),
+    'Gender': int(input('Enter Gender: ')),
+    'Family': int(input('Enter Family History: ')),
+    'diet': int(input('Enter Diet: ')),
+    'Lifestyle': int(input('Enter Lifestyle: ')),
+    'cholestrol': int(input('Enter Cholestrol: '))
+})
+print(q)
+# put 401132 / 101012
+
+p4
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+x = [4, 5, 10, 4, 3, 11, 14 , 6, 10, 12]
+y = [21, 19, 24, 17, 16, 25, 24, 22, 21, 21]
+plt.scatter(x, y)
+plt.show()
+data = list(zip(x, y))
+kmeans = KMeans(n_clusters=2)
+kmeans.fit(data)
+plt.scatter(x, y, c=kmeans.labels_)
+plt.show()
+
+p5
+import pandas as pd
+import matplotlib.pyplot as plt
+data = pd.read_csv("tips.csv")
+plt.scatter(data['day'], data['tip'])
+plt.title("Scatter Plot")
+plt.xlabel('Day')
+plt.ylabel('Tip')
+plt.show()
+
+import pandas as pd
+import matplotlib.pyplot as plt
+data = pd.read_csv("tips.csv")
+plt.scatter(data['day'], data['tip'], c=data['size'], s=data['total_bill'])
+plt.title("Scatter Plot")
+plt.xlabel('Day')
+plt.ylabel('Tip')
+plt.colorbar()
+plt.show()
+
+p6
+import pandas as pd
+import matplotlib.pyplot as plt
+data = pd.read_csv("tips.csv")
+plt.bar(data['day'], data['tip'])
+plt.title("Bar Chart")
+plt.xlabel('Day')
+plt.ylabel('Tip')
+plt.show()
+import matplotlib.pyplot as plt
+import numpy as np
+y = np.array([35,25,25,15])
+plt.pie(y)
+plt.show()
+import matplotlib.pyplot as plt
+import numpy as np
+y = np.array([35,25,25,15])
+mylabels = ["Apples", "Bananas", "Cherries", "Dates"]
+plt.pie(y, labels= mylabels)
+plt.show()
+import matplotlib.pyplot as plt
+import numpy as np
+y = np.array([35,25,25,15])
+mylabels = ["Apples", "Bananas", "Cherries", "Dates"]
+mycolors = ["black", "hotpink", "b", "#4CAF50"]
+plt.pie(y, labels = mylabels, colors = mycolors )
+plt.show()
+import matplotlib.pyplot as plt
+import numpy as np
+y = np.array([35,25,25,15])
+mylabels = ["Apples", "Bananas", "Cherries", "Dates"]
+mycolors = ["black", "hotpink", "b", "#4CAF50"]
+plt.pie(y, labels = mylabels, colors = mycolors )
+plt.show()
+
+p7
+import requests
+from bs4 import BeautifulSoup
+
+def check_word_in_webpage(url, word):
+    response = requests.get(url)
+    
+    if response.status_code == 200:
+        soup = BeautifulSoup(response.content, 'html.parser')
+        text_content = soup.get_text()
+        if word.lower() in text_content.lower():
+            print(f"The word '{word}' is present in the webpage.")
+        else:
+            print(f"The word '{word}' is not present in the webpage.")
+    else:
+        print("Failed to retrieve webpage.")
+        
+url = input("Enter the url you want to Scrap :  ")
+word_to_check = input("Enter the text you want to know which is present or not :  ")
+check_word_in_webpage(url, word_to_check)
+
 p9
 import numpy as np
 import pandas as pd
