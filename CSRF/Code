@@ -48,9 +48,41 @@ cat("Name:", name, "\nRoll No:", rollNo)
 1plot(1:10,type="l",col="green")
 2plot(1,4, col="red") 
 plot(c(2,3),c(4,6) ,col="blue")
+plot(c(1,3),c(5,10))
 3plot(1:3,type="l",lwd=3,col="green")
 4x<-c("A","B","C") 
 y<-c(2,4,6)
 barplot(y,main="Asad Faizee",names.arg = x,col="blue")
-plot(c(1,3),c(5,10))
+#Scatter plots
+x<-c(5,7,8,7,2,2,9,4,11,12,9,6)
+y<-c(99,86,87,88,111,103,87,94,78,77,85,88)
+plot(x,y)
+plot(x,y,main="Sayyed Nahil",xlab="Car age",ylab="Car Speed")
+line1<-c(1,2,3,4,5,10)
+line2<-c(2,5,7,8,9,10)
+plot(line1,main="Sayyed Nahil",type="l",col="red") 
+lines(line2,type="l",col="blue")
+
 p2B
+p9
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.tree import DecisionTreeClassifier, plot_tree
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+data = pd.read_csv('iris.csv')
+print(data.head())
+X = data.drop('species', axis=1)
+y = data['species']
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+model = DecisionTreeClassifier()
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+accuracy = accuracy_score(y_test, y_pred)
+print(f"Accuracy: {accuracy:.2f}")
+from sklearn.tree import DecisionTreeClassifier, plot_tree
+plt.figure(figsize=(12, 8))
+plot_tree(model, filled=True, feature_names=X.columns.tolist(), class_names=y.unique().tolist())
+plt.title("Decision Tree Visualization")
+plt.show()
