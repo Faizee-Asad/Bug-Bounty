@@ -217,6 +217,36 @@ url = input("Enter the url you want to Scrap :  ")
 word_to_check = input("Enter the text you want to know which is present or not :  ")
 check_word_in_webpage(url, word_to_check)
 
+p8
+import pandas as pd
+import matplotlib. pyplot as plt
+data = pd.read_csv("Nifty.csv")
+print(data)
+plt. plot(data['Open '],marker = "o",markeredgecolor="white", markerfacecolor="blue")
+plt. plot(data['Close '],marker = "o",markeredgecolor="white", markerfacecolor="orange")
+plt.grid()
+plt. title("Line Plot of NIFTY-50 by using Matplotlib")
+plt. xlabel('Open ')
+plt. ylabel('Close ')
+plt.legend(['Open', 'Close'])
+plt. show()
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+data = pd.read_csv("Nifty.csv")
+plt.figure(figsize=(10, 6))
+sns.lineplot(data=data[['Open ', 'Close ']], markers=True, marker='o', markeredgecolor="white", palette=['green', 'red'])
+plt.title("Line Plot of NIFTY-50 by using Seaborn")
+plt.xlabel('Index')
+plt.ylabel('Price')
+plt.grid(True)
+plt.show()
+import pandas as pd
+import plotly.express as px
+data = pd.read_csv("Nifty.csv")
+fig = px.line(data, x=data.index, y=['Open ', 'Close '], markers=True, title="Line Plot of NIFTY-50 using Plotly", labels={'index': 'Index', 'value': 'Price'}, color_discrete_sequence=['green', 'red'])
+fig.update_layout(legend_title='Price', legend=dict(x=0, y=1, traceorder='normal'), plot_bgcolor='rgba(0,0,0,0)')
+fig.show()
 p9
 import numpy as np
 import pandas as pd
