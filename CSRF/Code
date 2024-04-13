@@ -1,218 +1,56 @@
-p1a
-import numpy as np
-import pandas as pd
-from sklearn.datasets import load_iris
-from sklearn.model_selection import train_test_split
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.metrics import accuracy_score
-import matplotlib.pyplot as plt
-Iris = load_iris()
-X, Y = Iris.data, Iris.target
-X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.3, random_state=42)
-KNeighbors_Classifier = KNeighborsClassifier(n_neighbors=3)
-KNeighbors_Classifier.fit(X_train, Y_train)
-Y_pred = KNeighbors_Classifier.predict(X_test)
-accuracy = accuracy_score(Y_test, Y_pred)
-print("Accuracy:", accuracy)
-
-p1b
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-from sklearn.model_selection import train_test_split
+p1A
+import random
 from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_error, r2_score
-df = pd.read_csv("D:\MSC IT KC\SEM 2\ML\Practicals\Salary_Data.csv")
-x = df['YearsExperience'].values.reshape(-1,1)
-y = df['Salary'].values
-X_train, X_test, Y_train, Y_test = train_test_split(x, y, test_size=0.2, random_state=52)
-r1 = LinearRegression()
-r1.fit(X_train,Y_train)
-y_pred = r1.predict(X_test)
-MSE = mean_squared_error(Y_test, y_pred)
-r2 = r2_score(Y_test, y_pred)
-print('MSE:', MSE)
-print('r2:', r2)
-plt.scatter(X_test, Y_test, color='blue', label='Actual')
-plt.plot(X_test, y_pred, color='red', label='Predicted')
-plt.xlabel('Years of Experience')
-plt.ylabel('Salary')
-plt.legend()
-plt.show()
+feature_set = []
+target_set = []
+rows = 200
+limit = 2000
+for i in range(0,rows):
+  x = random.randint(0,limit)
+  y = random.randint(0,limit)
+  z = random.randint(0,limit)
+  g = 10*x + 2*y + 3*z
+  print("x=",x,"\ty=",y,"\tz=",z,"\tg=",g);
+  feature_set.append([x,y,z])
+  target_set.append(g)
+model = LinearRegression()
+model.fit(feature_set,target_set)
+Test_Data = [[1,2,1]]
+prediction = model.predict(Test_Data)
+print('Prediction:'+str(prediction)+'\t'+ 'Coefficient:'+str(model.coef_))
 
-p2
-
-import pandas as pd 
-from sklearn.model_selection import train_test_split 
-from sklearn.naive_bayes import GaussianNB 
-from sklearn.metrics import accuracy_score, classification_report, confusion_matrix 
-from sklearn.datasets import load_iris 
-iris = load_iris()
-X = iris.data
-y = iris.target
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=45)
-model = GaussianNB()
-model.fit(X_train, y_train)
-y_pred = model.predict(X_test)
-print("Predicted Species:", model.predict([[5.9, 3.2, 5.2, 1.8]])) # Example prediction for a sample data point
-accuracy = accuracy_score(y_test, y_pred)
-print("Accuracy:", accuracy)
-print("Confusion Matrix:\n", confusion_matrix(y_test, y_pred))
-print("Classification Report:\n", classification_report(y_test, y_pred))
-
-p3
-
-import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import PolynomialFeatures
-from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_error
-np.random.seed(0)
-X = np.linspace(0, 5, 200).reshape(-1, 1)
-Y = 2 * np.sin(X) + np.random.normal(0, 0.5, size=X.shape)
-X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2, random_state=42)
-degrees = [1, 4, 9]
-train_errors = []
-test_errors = []
-models = []
-for degree in degrees:
- poly = PolynomialFeatures(degree=degree)
- X_train_poly = poly.fit_transform(X_train)
- X_test_poly = poly.transform(X_test)
- model = LinearRegression()
- model.fit(X_train_poly, Y_train)
- models.append(model)
- train_errors.append(mean_squared_error(Y_train, model.predict(X_train_poly)))
- test_errors.append(mean_squared_error(Y_test, model.predict(X_test_poly)))
-plt.figure(figsize=(14, 8))
-plt.scatter(X_train, Y_train, color='red', label='Training Data')
-plt.scatter(X_test, Y_test, color='blue', label='Testing Data')
-x_values = np.linspace(0, 5, 200).reshape(-1, 1)
-for i, degree in enumerate(degrees):
- y_values = models[i].predict(PolynomialFeatures(degree=degree).fit_transform(x_values))
- plt.plot(x_values, y_values, label=f'Degree {degree}')
-plt.title('Sohel Tarafdar 039\nPolynomial Regression with Different Degrees')
-plt.xlabel('X')
-plt.ylabel('Y')
-plt.legend()
-plt.text(0, -2, f'Train RMSE: {train_errors}\nTest RMSE: {test_errors}', fontsize=10, 
-bbox=dict(facecolor='yellow', alpha=1))
-plt.show()
-
-p4
-import numpy as np 
-import pandas as pd 
-import matplotlib.pyplot as plt 
-from sklearn.model_selection import train_test_split 
-from sklearn.linear_model import LinearRegression 
-from sklearn.metrics import mean_squared_error, r2_score 
-df = pd.read_csv("D:\MSC IT KC\SEM 2\ML\Practicals\Salary_Data.csv")
-x = df['YearsExperience'].values.reshape(-1,1)
-y = df['Salary'].values
-xtrain, xtest, ytrain, ytest = train_test_split(x, y, test_size=0.33, random_state=99)
-r1 = LinearRegression()
-r1.fit(xtrain, ytrain)
-pred = r1.predict(xtest)
-r2 = r2_score(ytest, pred)
-print("RSquared:",r2)
-plt.scatter(xtest, ytest)
-plt.title('Sohel Tarafdar 039\nScatter plot of Test Data for Linear Regression')
-plt.xlabel('Years of Experience')
-plt.ylabel('Salary')
-plt.show()
-
-p5
-from sklearn.datasets import load_iris 
-from sklearn.model_selection import train_test_split 
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score 
-iris = load_iris()
-x = iris.data # Features
-y = iris.target # Target
-xtrain, xtest, ytrain, ytest = train_test_split(x, y, test_size=0.33, random_state=77)
-from sklearn.svm import SVC # Import SVC model
-model = SVC() # Initialize the model
-model.fit(xtrain, ytrain) # Train the model
-ypred = model.predict(xtest)
-accuracy = accuracy_score(ytest, ypred)
-print("Accuracy:", accuracy)
-precision = precision_score(ytest, ypred, average='macro')
-print("Precision:", precision)
-recall = recall_score(ytest, ypred, average='macro')
-print("Recall:", recall)
-f1 = f1_score(ytest, ypred, average='macro')
-print("F1 Score:", f1)
-
-p6a
-import numpy as np
-data = np.array([[1,3],[1.5,1.8],[5,9],[8,9],[1,0.6],[8,9],[7,10],[5.5,8.5]])
-k = 3
-from sklearn.cluster import KMeans
-kmeans = KMeans(n_clusters=k)
-kmeans.fit(data)
-cluster_labels = kmeans.predict(data)
-import matplotlib.pyplot as plt
-plt.scatter(data[:,0], data[:,1], c=cluster_labels)
-plt.xlabel("x coordinates")
-plt.ylabel("y coordinates")
-plt.title('Sohel Tarafdar 039\nKMeans Clustering (k=' + str(k) + ')')
-plt.show()
-
-p6b
-import numpy as np
+p1B
 import pandas as pd
-data = pd.DataFrame({'income': [25000, 50000, 100000, 125000, 150000, 200000],
- 'spending': [15000, 25000, 35000, 45000, 55000, 65000]})
-k = 4
-from sklearn.cluster import KMeans
-kmeans = KMeans(n_clusters=k)
-kmeans.fit(data)
-cluster_labels = kmeans.predict(data)
-import matplotlib.pyplot as plt
-plt.scatter(data['income'], data['spending'], c=cluster_labels)
-plt.xlabel("Income")
-plt.ylabel("Spending")
-plt.title('Sohel tarafdar 039\nKMeans Clustering (k=' + str(k) + ')')
-plt.show()
-
-p7
-mport numpy as np
-import pandas as pd # For data loading
-import matplotlib.pyplot as plt
-rom sklearn.tree import DecisionTreeClassifier, plot_tree
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
-from sklearn.datasets import load_wine # Load the wine dataset
-data = load_wine()
-x = data.data
-y = data.target
-X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.33, random_state=42)
-model = DecisionTreeClassifier()
-model.fit(X_train, y_train)
-y_pred = model.predict(X_test)
-accuracy = accuracy_score(y_test, y_pred)
-print("Sohel Tarafdar 039")
-print(f"Accuracy:", accuracy)
-plt.figure(figsize=(12, 8))
-plot_tree(model, filled=True, feature_names=data.feature_names, class_names=data.target_names)
-plt.title("Sohel Tarafdar 039")
-plt.show()
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import confusion_matrix, accuracy_score
+dataset = pd.read_csv("diabetes.csv")
+print(dataset.head())
+x = dataset.iloc[:, [0, 1, 2, 3, 4, 5, 6, 7]].values
+y = dataset.iloc[:, [-1]].values
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=100)
+sc = StandardScaler()
+x_train = sc.fit_transform(x_train)
+x_test = sc.transform(x_test)
+model = LogisticRegression()
+model.fit(x_train, y_train)  # Train the model
+y_pred = model.predict(x_test)
+cm = confusion_matrix(y_test, y_pred)
+print("Confusion Matrix :\n ", cm)
+print("Accuracy :", accuracy_score(y_test, y_pred) * 100)
 
-p8
-imort numpy as np
-from sklearn.cluster import AgglomerativeClustering
-from sklearn.metrics import silhouette_score, completeness_score
-data = np.array([[2, 2], [4, 4], [5, 3], [1, 0], [5, 4], [8, 1]])
-linkage = 'ward'
-model = AgglomerativeClustering(n_clusters=3, linkage=linkage)
-model.fit(data)
-cluster_labels = model.labels_
-s = silhouette_score(data, cluster_labels)
-print("Silhouette Score:", s)
-g = None
-if linkage == 'ward' and g is not None:
- c = completeness_score(g, cluster_labels)
- print("Completeness Score:", c)
-else:
- print("Completeness score not applicable")
-
+p2A
+https://rdrr.io/snippets/
+name <- "Asad Faizee"
+rollNo <- "KFMSCIT003"
+cat("Name:", name, "\nRoll No:", rollNo)
+1plot(1:10,type="l",col="green")
+2plot(1,4, col="red") 
+plot(c(2,3),c(4,6) ,col="blue")
+3plot(1:3,type="l",lwd=3,col="green")
+4x<-c("A","B","C") 
+y<-c(2,4,6)
+barplot(y,main="Asad Faizee",names.arg = x,col="blue")
+plot(c(1,3),c(5,10))
+p2B
