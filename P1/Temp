@@ -1,284 +1,210 @@
-Prac-1 (AAI) Neural Network
-x=float(input("Enter value of x:"))
-w=float(input("Enter value of w:"))
-b=float(input("Enter value of b:"))
-net = int(w*x+b)
-if(net<0):
-    out=0
-elif((net>=0)&(net<=1)):
-    out=net
-else:
-    out=1
-print("net=",net)
-print("output=",out)
-#number of elements as input
-n = int(input("Enter number of elements:"))
-print("Enter the inputs:")
-inputs= [] #creating an empty list for inputs
-#iternating till the range
-for i in range(0,n):
-    ele = float(input())
-    inputs.append(ele) #adding the element
-print(inputs)
-print("Enter the weights:")
-weights= [] #creating an empty list for inputs
-#iternating till the range
-for i in range(0,n):
-    ele = float(input())
-    weights.append(ele) #adding the element
-print(weights)
-print("The net input can be calculated as Yin = x1w1 + x2w2 + x3w3")
-# In[5]
-Yin= []
-for i in range(0,n):
-    Yin.append(inputs[i]*weights[i])
-print(round(sum(Yin),3))
+p1 - Building ASP.NET Core MVC Application.
+-Install .Net Core Sdk
+-Building ASP.NET Core MVC Application.
+-open command prompt and perform following operations Command: to create mvc project dotnet new mvc --
+auth none
+-Go to controllers folder and modify HomeController.cs file to match following:
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using MVC.Models;
+namespace MVC.Controllers
+{
+ public class HomeController : Controller
+ { public async Task <IActionResult> Index()
+ {
+ var model= new StockQuote{ Symbol="HELLO", Price=3200};
+ return View(model);
+ }
+ }
+} 
+-Run the project cmd: dotnet run
+-Now open browser and and type URL: localhost:5135
+-Now go back to command prompt and stop running project using CTRL+C
+- Go to models folder and add new file StockQuote.cs to it with following content
+using System;
+namespace MVC.Models
+{
+ public class StockQuote
+ { public string Symbol {get;set;}
+ public int Price{get;set;}
+ }
+} 
+-Now Add View to folder then home folder in it and modify index.cshtml file to match following
+(\MVC\Views\Home)
+@{
+ ViewData["Title"] = "Home Page";
+}
+<div>
+ Symbol: @Model.Symbol <br/>
+ Price: $@Model.Price <br/>
+</div>
+-Now modify HomeController.cs file to match following:
+(alredy modify)
+-Now run the project using
+-Now go back to browser and refresh to get modified view response
 
-Prac-2 (AAI) McCulloch-Pitt 
-import numpy
-# enter the no of values
-num_ip = int(input("Enter the number of inputs:"))
-# set the weights with value 1
-w1= 1
-w2= 1
-print("For the",num_ip,"inputs calculate the net input using yin= x1w1 + x2w2")
-x1= []
-x2= []
-for j in range(0,num_ip):
-    e1e1 = int(input("x1 = "))
-    e1e2 = int(input("x2 = "))
-    x1.append(e1e1)
-    x2.append(e1e2)
-print("x1 = ",x1)
-print("x2 = ",x2)
-n = x1 * w1
-m = x2 * w2
-Yin = []
-for i in range(0,num_ip):
-    Yin.append(n[i] + m[i])
-print("Yin =", Yin)    
-#Assume one weight as excitatory and the other as inhibitory, i.e,
-Yin = []
-for i in range(0,num_ip):
-    Yin.append(n[i] - m[i])
-print("After assuming one weight as excitatory and the other as inhibitory Yin=", Yin)
-#from the calculated net inputs, now it is possible yo fire the neuron for input(1,-1)
-# only by fixing a threshold of 1, i.e., 0 > 1 for Y unit
-# Thus, w1 = 1, w2= -1, 0>=1
-Y=[]
-for i in range(0,num_ip):
-    if(Yin[i]>=1):
-        ele=1
-        Y.append(ele)
-    if(Yin[i]<1):
-        ele=0
-        Y.append(ele)
-print("Y=",Y)
+p2 - Building ASP. NET Core REST API
+-Download and install dotnet
+-Check everything installed correctly cmd: dotnet
+Create your web API
+-Open two command prompts Command prompt 1: Command: dotnet new webapi -o Glossary
+-Command Prompt 2: (try running ready made weatherforecast class for testing) Command: curl --insecure
+https://localhost:5001/weatherforecast
+-Now Change the content: To get started, remove the WeatherForecast.cs file from the root of the project and the
+WeatherForecastController.cs file from the Controllers folder. Add Following two files
+-D:\Glossary\GlossaryItem.cs (type it in notepad and save as all files)
+-D:\Glossary\Controllers\ GlossaryController.cs (type it in notepad and save as all files)
+-Now stop running previous dotnet run on command prompt 1 using Ctrl+C. and Run it again for new code. On
+Command prompt1: dotnet run
+-On Command prompt2:
+1. Getting a list of items: Command: curl --insecure http://localhost:5176/api/glossary
+2. Getting a single item Command: curl --insecure ttp://localhost:5176/api/glossary/MVC
+3. Creating an item Command: curl --insecure -X POST -d "{\"term\": \"MFA\", "definition\":\"An uthentication
+process.\"}" -H "ContentType:application/json" http://localhost:5176/api/glossary
+4. Update Item Command:
+curl --insecure -X PUT -d "{\"term\": \"MVC\", \"definition\":\"Modified record of Model View Controller.\"}" -H
+"Content-Type:application/json" http://localhost:5176/api/glossary
+5. Delete Item:
+curl --insecure --request DELETE --url http://localhost:5176/api/glossary/openid
 
-Prac-3 (AAI) Decision Tree
-import pandas as pd
-#loading the Playtennis data
-PlayTennis = pd.read_csv("D:\MSC.IT\Practical\AAI\Datasets\play_tennis.csv")
-PlayTennis
-PlayTennis.shape
-PlayTennis.describe()
-PlayTennis.dtypes
-PlayTennis.head(4)
-PlayTennis.tail(4)
-PlayTennis.columns
-from sklearn.preprocessing import LabelEncoder
-Le = LabelEncoder()
-PlayTennis['day'] = Le.fit_transform(PlayTennis ['day'])
-PlayTennis['outlook'] = Le.fit_transform(PlayTennis ['outlook'])
-PlayTennis['temp'] = Le.fit_transform (PlayTennis ['temp'])
-PlayTennis['humidity'] = Le.fit_transform(PlayTennis['humidity'])
-PlayTennis['wind'] = Le.fit_transform (PlayTennis ['wind'])
-PlayTennis['play'] = Le.fit_transform (PlayTennis['play'])
-PlayTennis
-y = PlayTennis['play']
-x = PlayTennis.drop(['play'], axis=1)
-x.dtypes
-from sklearn import tree
-clf = tree.DecisionTreeClassifier(criterion = 'entropy')
-clf = clf.fit(x,y)
-tree.plot_tree(clf)
+p3- Working with docker, docker commands, docker images & Containers.
+-Create Docker Hub Account from https://hub.docker.com
+-Navigate to Play with Docker from https://labs.play-with-docker.com/
+- Click on create Instance and enter the following command
+$ docker -v
+$ docker –version
+B) Build your own image file from docker file & push & pull & run the file.
+-Create Docker file
+$ docker login --username=whatever
+$ docker images
+$ cat > dockerfile <<EOF
+> FROM busybox
+> CMD echo "Hello"
+> EOF
+-Enter command to build the ‘dockerfile’ created in step 1: $ docker build .\
+- List all the images from the docker: $ docker images
+- docker run -p 80:80 imageid
+- Push the image to docker.
+- Navigate to Docker repository and check the Image in Tags section.
 
-Prac-4 (AAI) SVM
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
-from sklearn.linear_model import LogisticRegression, LogisticRegressionCV
-from sklearn.svm import SVC,LinearSVC
-import plotly.express as pl
-from sklearn.model_selection import train_test_split,cross_val_score,cross_val_predict
-from sklearn.metrics import confusion_matrix
-pd.set_option('display.max_rows',1000)
-pd.set_option('display.max_columns',1000)
-pd.set_option('display.width',1000)
-data = pd.read_csv('D:\MSC.IT\Practical\AAI\Datasets\diabetes.csv')
-data.head()
-data.tail()
-data.shape
-data.describe()
-x=data.drop('Outcome',axis=1)
-y = data["Outcome"] #will predict outcome (diabetes)
-x_train = x.iloc[:600]
-x_test = x.iloc[600:]
-y_train = y[:600]
-y_test = y[600:]
-print("x_train Shape: ", x_train.shape)
-print("x_test Shape: ", x_test.shape)
-print("y_train Shape: ", y_train.shape)
-print("y_test Shape: ", y_test.shape)
-support_vector_classifier=SVC(kernel="linear").fit(x_train,y_train)
-support_vector_classifier
-support_vector_classifier.C
-support_vector_classifier
-y_pred=support_vector_classifier.predict(x_test)
-cm=confusion_matrix(y_test,y_pred)
-cm
+p4 - Installing Software packages on docker.
+-Go to CLI Option on the container in Docker Desktop
+-Now, you have opened the bash of your Ubuntu Docker Container. To Install any packages, you first need to
+update the OS.
+$ apt-get -y update
+-After you have updated the Docker Container, You can now install the Firefox and VM Packages inside it.
+$ apt-get -y install firefox
+$ apt-get -y install vim
+-Run vim to verify if the software package has been installed.
 
-Prac-5 (AAI) K-Nearest Neighbor
-#WAP to implement k-nearest neighbour algorithm to classify the iris dataset
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-plt.style.use('ggplot')
-df = pd.read_csv('D:\MSC.IT\Practical\AAI\Datasets\diabetes.csv')
-df.head()
-df.shape
-df.dtypes
-x= df.drop('Outcome', axis=1).values
-y= df['Outcome'].values
-from sklearn.model_selection import train_test_split
-x_train,x_test,y_train,y_test = train_test_split(x,y,test_size=0.4,random_state=42)
-from sklearn.neighbors import KNeighborsClassifier
-neighbors = np.arange(1,9)
-train_accuracy = np.empty(len(neighbors))
-test_accuracy = np.empty(len(neighbors))
-for i,k in enumerate(neighbors):
-#Setup a knn classifier with k neighbors
-    knn = KNeighborsClassifier(n_neighbors=k)
-#Fit the model
-    knn.fit(x_train, y_train)
-#Compute accuracy on the training set
-    train_accuracy[i] = knn.score(x_train,y_train)
-#Compute accuracy on the test set
-    test_accuracy[i] = knn.score(x_test,y_test)
-plt.title('k-NN Varying number of neighbors')
-plt.plot(neighbors,test_accuracy,label='Testing Accuracy')
-plt.plot(neighbors,train_accuracy,label='Training Accuracy')
-plt.legend()
-plt.xlabel('Number of neighbors')
-plt.ylabel('Accuracy')
-plt.show()
-knn= KNeighborsClassifier(n_neighbors=7)
-knn.fit(x_train,y_train)
-KNeighborsClassifier(n_neighbors=7)
-knn.score(x_test,y_test)
-from sklearn.metrics import confusion_matrix
-y_pred = knn.predict(x_test)
-confusion_matrix(y_test,y_pred)
-from sklearn.metrics import classification_report
-print(classification_report(y_test,y_pred))
-y_pred_proba = knn.predict_proba (x_test)[:,1]
-from sklearn.metrics import roc_curve
-fpr, tpr, thresholds = roc_curve (y_test, y_pred_proba)
-plt.plot([0,1],[0,1], 'k--')
-plt.plot(fpr, tpr, label='Knn')
-plt.xlabel('fpr')
-plt.ylabel('tpr')
-plt.title('Knn(n_neighbors=7) ROC curve')
-plt.show()
-from sklearn.metrics import roc_auc_score
-roc_auc_score
-(y_test,y_pred_proba)
-from sklearn.metrics import roc_auc_score
-roc_auc_score
-(y_test,y_pred_proba)
-knn = KNeighborsClassifier()
-knn_cv= GridSearchCV (knn, param_grid,cv=5)
-knn_cv.fit(x,y)
-knn_cv.best_score_
-knn_cv.best_params_
+p5 - Working with Docker Volumes and Networks.
+Pre-Requisites:
+1. Open Windows Firewall
+2. Click on Advanced Security
+3. Click on Inbound Rules
+4. Create a New Rule
+a) Which type of rule would you like to create → port
+b) Does this rule apply the local ports or specific local ports
+c) Select Specific local ports - 80
+d) What action should be taken when a connection matches the specified conditions? - Allow the
+connection
+e) When does this apply? – Domain, Private, Public
+f) Name: ReportServer
+g) Description: ReportServer
+-a) docker pull nginx – nginx : nginx is the image which is already available in docker
+b) docker run -it –name=webApp -d -p 80:80 nginx: Create a webapp and run it with nginx image on port 80
+-Click on Port and enter 80 in the dropdown window and click OK
+docker exec -it WebApp bash
+Cd /usr/share/nginx/html
+Echo “Hello Welcome to updated nginx Page.”> index.html
+exit
+-List all the running containers: docker ps
+Create another container in Docker: WebApp1
+-Docker run -it –name=WebApp1 -d -p 80:80 nginx:
+Click on port and enter 80 in the dropdown and click ok
+Output: the welcome page of nginx should be visible
+Problem: Updates made in one container is not reflected into another container.
+Solution: - Volume
+Update made in one container within the volume will be reflected in all the containers of that volume.
+Step 7: Creation of Volume(MyVolume) Command:
+a. docker volume create MyVolume
+b. docker volume ls
+c. docker volume inspect MyVolume
+d. docker stop WebApp1
+Step 8: Create a container (WebApp2) inside the container MyVolume
+docker run -d –name = WebApp2 –mount source=MyVolume,destination=/usr/share/nginx/html –p 80:80 nginx
+Step 9: Enter the below commands:
+a) ls /
+b) cd /var/lib/docker
+c) ls
+d) cd volumes
+e) ls
+f) cd MyVolume
+g) ls
+h) cd _data
+Step 10: Edit the index file with the below content to “Display the content on the Webpage”
+Step 11: Stop the above container (WebApp2) and Create another container within the volume (MyVolume)
+Open port 80
+Output: The edits made in one container of the volume will be reflected in all the containers of that volume
 
-Prac-6 (AAI) Naive Bayes
-import pandas as pd
-from sklearn.datasets import load_iris
-from sklearn.model_selection import train_test_split
-from sklearn.naive_bayes import GaussianNB
-from sklearn.metrics import accuracy_score
-from sklearn.naive_bayes import MultinomialNB ,CategoricalNB
-from sklearn.metrics import classification_report,accuracy_score,confusion_matrix
-#importing dataset
-iris= pd.read_csv("D:\MSC.IT\Practical\AAI\Datasets\Iris.csv")
-iris
-#print top 5
-iris.head(5)
-#print last 5
-iris.tail(5)
-iris.shape
-iris.describe
-iris.info()
-iris.columns
-iris.dtypes
-#selecting all values of 'SepalLengthCm','SepalWidthCm','PetalLengthCm','PetalWidthCm'
-X = iris.iloc[:,[1,2,3,4]].values
-#Selecting all values of species (Prediction output)
-y = iris.iloc[:,[5]].values
-x_train, x_test , y_train, y_test = train_test_split(X,y,test_size=0.2, random_state=40)
-print("Split the dataset (X and Y) into training and testing sets successfully")
-print("**********FOR GAUSSAIN NAIVE BAYES CLASSIFICATION*************")
-GNBclf= GaussianNB()
-GNBclf.fit(x_train,y_train)
-y_pred = GNBclf.predict(x_test)
-out = GNBclf.predict([[5.9,3.0,5.1,1.8]])
-print("Predicted Species:",out)
-print("Confusion Matrix\n",confusion_matrix(y_test,y_pred))
-print("classification Matrix\n",classification_report(y_test,y_pred))
-print("Accuracy\n",accuracy_score(y_test,y_pred))
+p6 - Working with Circle CI for continuous integration.
+Step 1 - Create a repository
+1. Log in to GitHub and begin the process to create a new repository.
+2. Enter a name for your repository (for example, hello-world).
+3. Select the option to initialize the repository with a README file.
+4. Finally, click Create repository.
+5. There is no need to add any source code for now
+6. Login to Circle CI https://app.circleci.com/ Using GitHub Login, Once logged in navigate to Projects.
 
-Prac-7 (AAI) K-Means
-import pandas as pd
-#selecting only longitude, latitude, median_house_value from all the columns
-home_data = pd.read_csv('D:\MSC.IT\Practical\AAI\Datasets\housing.csv', usecols = ['longitude', 'latitude', 'median_house_value'])
-home_data.head()
-import seaborn as sns
-#shows the actual map with the help of longitude and latitude
-#colored datapoints w.r.t long and lat(which shows house near to ocean is pretty expensive)
-sns.scatterplot(data = home_data, x = 'longitude', y = 'latitude', hue = 'median_house_value')
-from sklearn.model_selection import train_test_split
-#Making testing and training data
-X_train, X_test, y_train, y_test = train_test_split(home_data[['latitude', 'longitude']], home_data[['median_house_value']], test_size=0.33, random_state=0)
-from sklearn import preprocessing
-#Normalising the data
-X_train_norm = preprocessing.normalize(X_train)
-X_test_norm = preprocessing.normalize(X_test)
-from sklearn import preprocessing
-#Normalising the data
-X_train_norm = preprocessing.normalize(X_train)
-X_test_norm = preprocessing.normalize(X_test)
-sns.scatterplot(data = X_train, x = 'longitude', y = 'latitude', hue = kmeans.labels_)
-sns.boxplot(x = kmeans.labels_, y = y_train['median_house_value'])
-from sklearn.metrics import silhouette_score
-silhouette_score(X_train_norm, kmeans.labels_, metric='euclidean')
-K = range(2, 8)
-fits = []
-score = []
-for k in K:
-    # train the model for current value of k on training data
-    model = KMeans(n_clusters = k, random_state = 0, n_init='auto').fit(X_train_norm)
-    
-    # append the model to fits
-    fits.append(model)
-    
-    # Append the silhouette score to scores
-    score.append(silhouette_score(X_train_norm, model.labels_, metric='euclidean'))
-sns.scatterplot(data = X_train, x = 'longitude', y = 'latitude', hue = fits[0].labels_)
-sns.scatterplot(data = X_train, x = 'longitude', y = 'latitude', hue = fits[1].labels_)
-sns.scatterplot(data = X_train, x = 'longitude', y = 'latitude', hue = fits[2].labels_)
-sns.lineplot(x = K, y = score)
-#This is the last part
-sns.scatterplot(data = X_train, x = 'longitude', y = 'latitude', hue = fits[3].labels_)
-sns.boxplot(x = fits[3].labels_, y = y_train['median_house_value'])
+p7 - Creating Backing service with ASP.NET 2.0 core.
+-Now login in to Play-With-Docker
+Start typing following commands
+-Command:
+docker run -d -p 5000:5000 -e PORT=5000 \
+> -e LOCATION URL=http://localhost:5001 \
+> dotnetcoreservices/teamservice:location
+output: (you can observe that it has started port 5000 on top)
+-Command: to run location service
+docker run -d -p 5001:5001 -e PORT=5001 \
+> dotnetcoreservices/locationservice:nodb
+output: (now it has started one more port that is 5001 for location service)
+-Command: to check running images in docker $docker images
+-Command: to create new team
+curl -H "Content-Type:application/json" -X POST -d \
+> '{"id":"e52baa63-d511- 417e-9e54-7aab04286281",
+"name":"KC"}' http://localhost:5000/teams
+-output:Command: To confirm that team is added
+curl http://localhost:5000/teams/e52baa63-d511-417e-9e54-7aab04286281
+-Command: to add new member to team
+curl -H "Content-Type:application/json" -X POST -d \
+> '{"id":"63e7acf8-8fae- 42ce-9349-3c8593ac8292",
+"firstName":"Kirti", "lastName":"Bhatt"}' http://localhost:5000/teams/e52baa63-d511-417e-9e54-
+7aab04286281/members
+-Command: To confirm member added
+curl http://localhost:5000/teams/e52baa63-d511-417e-9e54-7aab04286281
+-Command: To add location for member
+curl -H "Content-Type:application/json" -X POST -d \'{"id":"64c3e69f-1580- 4b2f-a9ff-2c5f3b8f0e1f",
+"latitude":12.0,"longitude":12.0,"altitude":10.0, "timestamp":0,"memberId":"63e7acf8-8fae-42ce-9349-3c8593ac8292"}'
+http://localhost:5001/locations/63e7acf8-8fae-42ce-9349-3c8593ac8292
+-Command: To confirm location is added in member
+curl http://localhost:5001/locations/63e7acf8-8fae-42ce-9349-3c8593ac8292
+
+p8 -  Working with Kubernetes.
+Step 1: Add a new Instance
+Step 2: Create master node and create a Cluster Using the following commands
+Master: kubeadm init --apiserver-advertise-address $(hostname -i) --pod-network-cidr 10.5.0.0/16
+Cluster: kubectl apply -f https://raw.githubusercontent.com/cloudnativelabs/kube-
+router/master/daemonset/kubeadm-kuberouter.yam
+You Can Create worker node using the following command given by master node in another.
+The Below Command Can be used to create Containers in the pods in master node/Control plane
+kubectl create deployment my-dep --image=nginx --replicas=3
+Basic Commands
+View the nodes available - kubectl get nodes
+View the pods available - kubectl get pods
+View the Services available - kubectl get services
+Check the version - docker -v
