@@ -1,0 +1,29 @@
+
+I share some Good learning Resources of Subdomain Takeover Vulnerability
+
+
+Subdomain takeovers
+
+https://developer.mozilla.org/en-US/docs/Web/Security/Subdomain_takeovers
+
+https://www.hackerone.com/application-security/guide-subdomain-takeovers
+
+https://github.com/m4ll0k/takeover
+
+https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/02-Configuration_and_Deployment_Management_Testing/10-Test_for_Subdomain_Takeover
+
+https://medium.com/@Hacker0x01/a-guide-to-subdomain-takeovers-ddebe0684a58
+
+https://safaras.medium.com/find-your-first-bug-1-subdomain-takeover-8c7e6192220f
+
+https://medium.com/@aishwaryakendle/how-we-hijacked-26-subdomains-9c05c94c7049
+
+https://medium.com/@thebuckhacker/how-to-do-55-000-subdomain-takeover-in-a-blink-of-an-eye-a94954c3fc75
+
+https://medium.com/@friendly_/subdomain-takeover-awarded-200-8296f4abe1b0
+
+https://hakluke.medium.com/how-to-setup-an-automated-sub-domain-takeover-scanner-for-all-bug-bounty-programs-in-5-minutes-3562eb621db3
+
+https://monish-basaniwal.medium.com/how-i-found-my-first-subdomain-takeover-vulnerability-b7d5c17b61fd
+
+https://dhivishvarshan.medium.com/subdomain-takeover-fb9a0bc67e6
